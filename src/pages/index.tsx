@@ -10,6 +10,8 @@ const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const user = useUser()
   const d = user.isSignedIn ? <div>hello<SignOutButton></SignOutButton></div> : <div>signin plz <SignInButton /></div>
+  const {data} = api.example.getAll.useQuery();
+  console.log('the data', data);
 
   return (
     <>
