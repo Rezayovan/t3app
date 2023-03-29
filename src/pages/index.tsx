@@ -2,14 +2,14 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useAuth, SignInButton, useUser } from "@clerk/nextjs";
+import { useAuth, SignInButton, useUser, SignedOut, SignOutButton } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const user = useUser()
-  const d = user.isSignedIn ? <div>hello</div> : <div>signin plz <SignInButton /></div>
+  const d = user.isSignedIn ? <div>hello<SignOutButton></SignOutButton></div> : <div>signin plz <SignInButton /></div>
 
   return (
     <>
